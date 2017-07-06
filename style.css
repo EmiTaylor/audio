@@ -12,18 +12,19 @@ body {
     border-radius: 100%;
     width: 55px;
     text-align: center;
-    /*height: 55px;*/
     padding: 15px;
-    /*margin-left: 1150px;*/
     color: #8D9297;
     background-color: #1A252F;
     border-bottom: 25px;
     opacity: 1;
     transition-duration: 0.5s;
-    position: fixed;
+    position: absolute;
     bottom: 0.5em;
     right: 0.5em;
-
+}
+#playerBox.open {
+  /*opacity: 1;*/
+  visibility: visible;
 }
 /*Hover sound icon*/
 #playerBox .material-icons:hover {
@@ -36,7 +37,7 @@ body {
     margin: 30px auto;
     margin-left: 800px;
 }
-.container::after {
+/*.container::after {
     position: absolute;
     content: '';
     width: 95%;
@@ -48,13 +49,13 @@ body {
     border-radius: 100%;
     filter: blur(2px);
     z-index: -1;
-
-}
+}*/
 .player {
     position: relative;
     background: #1A252F;
     border-radius: 0 0 11px 11px;
     overflow: hidden;
+    display: none;
 }
 .player-head {
     position: relative;
@@ -71,7 +72,7 @@ body {
     position: absolute;
     content: '';
     width: 400px;
-    height: 300px;
+    height: 250px;
     border-radius: 9px;
     display: block;
     background: rgba(163, 0, 50, 0.1);
@@ -86,7 +87,7 @@ body {
 }
 .player-body {
     position: relative;
-    height: 200px;
+    height: 150px;
     overflow: hidden;
     text-align: center;
     border-top: 1px solid rgba(111,2,41,0.7);

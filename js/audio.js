@@ -1,4 +1,27 @@
+// playerbox effect
+$(document).ready(function() {
+    $('#playerBox').click(function() {
+    $('.player').fadeToggle();
+
+        var wH = $(window).width();
+        if (wH > 767) {
+            $('.player').toggleClass('push-content');
+        }
+        $this = $(this);
+        if ($this.hasClass('is-open')) {
+            $this.addClass('is-close').removeClass('is-open');
+            $('body').css('overflowY', 'visible');
+            $('.player').show();
+            } else {
+                $this.removeClass('is-close').addClass('is-open');
+                $('body').css('overflowY', 'hidden');
+            }
+    });
+});
+
+// songs
 var songs = new Array();
+
 songs.push({
     song: 'audio/thexx.mp3',
     coverSong: 'img/1.png',
@@ -22,7 +45,8 @@ song.play();
 
 var songIndex = 0;
 
-// control icons
+
+//icons control
 $("#play").click(function() {
     if (!song.paused) {
         $("#play").html('<i class=\'material-icons\'>pause</i>')
@@ -39,11 +63,11 @@ $("#next").click(function() {
         song = new Audio(songs[songIndex].song);
         song.play();
     } else {
-            song.pause();
-            songIndex--;
-            song = new Audio(songs[songIndex].song);
-            song.play();
-    }
+        song.pause();
+        songIndex--;
+        song = new Audio(songs[songIndex].song);
+        song.play();
+    }// // playerbox
     // $('#coverSong') = ('#coverSong')++;
 });
 $("#previous").click(function() {
@@ -52,14 +76,16 @@ $("#previous").click(function() {
         songIndex--;
         song = new Audio(songs[songIndex].song);
         song.play();
-     } else {
-            song.pause();
-            songIndex++;
-            song = new Audio(songs[songIndex].song);
-            song.play();
+    } else {
+        song.pause();
+        songIndex++;
+        song = new Audio(songs[songIndex].song);
+        song.play();
     }
 });
 
+
+//progressbar control
 // $().ready(function progressTime('#progressTime') {
 //     var hours = Math.floor(time / 3600);
 //     var mins = Math.floor((time % 3600) / 60);
@@ -80,6 +106,9 @@ $("#previous").click(function() {
 //     }
 // }
 
+
+
+// mouse position
 /*        function getMousePosition(event) {
             return {
                 x: event.pageX,
@@ -87,6 +116,8 @@ $("#previous").click(function() {
             };
         }
 
+
+// element position
         function getPosition(element) {
             var top = 0,
                 left = 0;
@@ -102,9 +133,14 @@ $("#previous").click(function() {
             };
         }
 
+
         function clickProgress(idplayer, control, event) {
-            var parent = getPosition(control); // La position absolue de la progressBar
-            var target = getMousePosition(event); // L'endroit de la progressBar où on a cliqué
+
+        // La position absolue de la progressBar
+            var parent = getPosition(control);
+
+        // L'endroit de la progressBar où on a cliqué
+            var target = getMousePosition(event); 
             var player = document.querySelector('#' + idPlayer);
 
             var x = target.x - parent.x;
